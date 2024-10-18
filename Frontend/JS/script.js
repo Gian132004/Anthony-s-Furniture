@@ -3,9 +3,15 @@
 
 // Update products array
 let products = [
-    { id: 1, title: 'Wooden Chair', price: 59.99, stock: 50, image: 'assets/00.jpg' },
-    { id: 2, title: 'Dining Table', price: 299.99, stock: 20, image: 'assets/01.avif' },
-    { id: 3, title: 'Sofa', price: 499.99, stock: 15, image: 'assets/02.jpg' },
+    { id: 1, title: 'Wooden Chair', price: 59.99, stock: 50, image: '/Frontend/images/00.jpg' },
+    { id: 2, title: 'Dining Table', price: 299.99, stock: 20, image: '/Frontend/images/01.avif' },
+    { id: 3, title: 'Sofa', price: 499.99, stock: 15, image: '/Frontend/images/02.jpg' },
+    { id: 3, title: 'Chair', price: 499.99, stock: 15, image: '/Frontend/images/chair2.jpg' },
+    { id: 3, title: 'Classic Oak Dining Set', price: 499.99, stock: 15, image: '/Frontend/images/table.jpg' },
+    { id: 3, title: 'Wooden Bench', price: 499.99, stock: 15, image: '/Frontend/images/door.jpg' },
+    { id: 3, title: 'Sofa', price: 499.99, stock: 15, image: '/Frontend/images/chair1.jpg' },
+    { id: 3, title: 'Sofa', price: 499.99, stock: 15, image: '/Frontend/images/upoan.jpg' },
+    { id: 3, title: 'Sofa', price: 499.99, stock: 15, image: '/Frontend/images/00.jpg' },
 ];
 
 let currentOrder = [];
