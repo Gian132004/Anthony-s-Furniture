@@ -1,3 +1,4 @@
+/* Body and general layout */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #90604C;
@@ -10,8 +11,9 @@ body {
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
+/* Remove background color from the sidebar header */
 .sidebar-header {
-  background-color: #c1ad78;
+  background-color: transparent; /* Remove the background color */
 }
 
 .sidebar-header h2 {
@@ -19,6 +21,7 @@ body {
   font-weight: 600;
 }
 
+/* Sidebar navigation links */
 .nav-link {
   color: #8b4513;
   background-color: transparent;
@@ -38,6 +41,7 @@ body {
   font-size: 1.2rem;
 }
 
+/* Main content area */
 main {
   background-color: #f5f5dc;
   min-height: 100vh;
@@ -49,6 +53,7 @@ h2 {
   margin-bottom: 20px;
 }
 
+/* Card styles */
 .card {
   background-color: #f0e6d2;
   border: none;
@@ -69,28 +74,37 @@ h2 {
   background-color: #EADDCA;
 }
 
+/* Button styles */
 .btn-primary {
-  background-color: #8b4513;
-  border-color: #8b4513;
+  background-color: #8b4513; /* Set brown background */
+  border-color: #8b4513; /* Set brown border */
+  color: #fff; /* White text for contrast */
+  padding: 10px 20px; /* Default padding */
+  font-size: 1rem; /* Default font size */
+  transition: all 0.3s;
 }
 
 .btn-primary:hover {
-  background-color: #a0522d;
-  border-color: #a0522d;
+  background-color: #a0522d; /* Lighter brown on hover */
+  border-color: #a0522d; /* Lighter brown border on hover */
 }
 
+/* Logout button */
 #logoutBtn {
-  background-color: #8b4513;
+  background-color: #8b4513; /* Brown color */
   border-color: #8b4513;
   color: #fff;
+  padding: 10px 20px; /* Default padding */
+  font-size: 1rem; /* Default font size */
   transition: all 0.3s;
 }
 
 #logoutBtn:hover {
-  background-color: #a0522d;
+  background-color: #a0522d; /* Lighter brown on hover */
   border-color: #a0522d;
 }
 
+/* Mobile responsive sidebar */
 @media (max-width: 767.98px) {
   .sidebar {
       position: fixed;
@@ -110,6 +124,7 @@ h2 {
   }
 }
 
+/* Active and hidden sections */
 .active-section {
   display: block;
 }
@@ -118,6 +133,7 @@ h2 {
   display: none;
 }
 
+/* Product card styles */
 .product-card {
   height: 100%;
 }
@@ -125,4 +141,20 @@ h2 {
 .product-card img {
   height: 200px;
   object-fit: cover;
+}
+
+/* Checkout button styling */
+#checkoutBtn {
+  background-color: #8b4513; /* Brown color */
+  border-color: #8b4513;
+  color: #fff;
+  padding: 10px 20px; /* Default padding */
+  font-size: 1rem; /* Default font size */
+  transition: all 0.3s;
+  border-radius: 8px;
+}
+
+#checkoutBtn:hover {
+  background-color: #a0522d; /* Lighter brown on hover */
+  border-color: #a0522d;
 }
