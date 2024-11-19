@@ -1,19 +1,23 @@
 /* Body and general layout */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #90604C;
+  background-color: #f0f0f0;
+  display: flex;
+  height: 100vh;
 }
 
 .sidebar {
   background-color: #d7cba6;
+  width: 250px;
   min-height: 100vh;
   transition: all 0.3s;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
-/* Remove background color from the sidebar header */
 .sidebar-header {
-  background-color: transparent; /* Remove the background color */
+  background-color: transparent;
+  padding: 15px;
+  text-align: center;
 }
 
 .sidebar-header h2 {
@@ -21,7 +25,12 @@ body {
   font-weight: 600;
 }
 
-/* Sidebar navigation links */
+/* Remove "X" button styling (no longer needed) */
+.sidebar-header .btn {
+  display: none; /* Hides the toggle button */
+}
+
+/* Navigation link styles */
 .nav-link {
   color: #8b4513;
   background-color: transparent;
@@ -42,22 +51,28 @@ body {
 }
 
 /* Main content area */
-main {
+.content {
+  flex: 1;
   background-color: #f5f5dc;
-  min-height: 100vh;
   padding: 20px;
 }
 
+/* Section titles */
 h2 {
   color: #8b4513;
   margin-bottom: 20px;
+}
+
+h3, h4 {
+  color: #8b4513;
+  margin-bottom: 15px;
 }
 
 /* Card styles */
 .card {
   background-color: #f0e6d2;
   border: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   transition: all 0.3s;
 }
@@ -75,53 +90,30 @@ h2 {
 }
 
 /* Button styles */
-.btn-primary {
-  background-color: #8b4513; /* Set brown background */
-  border-color: #8b4513; /* Set brown border */
-  color: #fff; /* White text for contrast */
-  padding: 10px 20px; /* Default padding */
-  font-size: 1rem; /* Default font size */
-  transition: all 0.3s;
-}
-
-.btn-primary:hover {
-  background-color: #a0522d; /* Lighter brown on hover */
-  border-color: #a0522d; /* Lighter brown border on hover */
-}
-
-/* Logout button */
-#logoutBtn {
-  background-color: #8b4513; /* Brown color */
+.btn-primary, #checkoutBtn, #logoutBtn {
+  background-color: #8b4513;
   border-color: #8b4513;
   color: #fff;
-  padding: 10px 20px; /* Default padding */
-  font-size: 1rem; /* Default font size */
+  padding: 10px 20px;
+  font-size: 1rem;
   transition: all 0.3s;
+  border-radius: 8px;
 }
 
-#logoutBtn:hover {
-  background-color: #a0522d; /* Lighter brown on hover */
+.btn-primary:hover, #checkoutBtn:hover, #logoutBtn:hover {
+  background-color: #a0522d;
   border-color: #a0522d;
 }
 
-/* Mobile responsive sidebar */
-@media (max-width: 767.98px) {
-  .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      z-index: 100;
-      padding: 0;
-  }
+/* Product card styles */
+.product-card img {
+  height: 200px;
+  object-fit: cover;
+}
 
-  .sidebar.collapse {
-      margin-left: -100%;
-  }
-
-  .sidebar.collapse.show {
-      margin-left: 0;
-  }
+/* Product form styles */
+#addProductForm input {
+  margin-bottom: 10px;
 }
 
 /* Active and hidden sections */
@@ -133,28 +125,42 @@ h2 {
   display: none;
 }
 
-/* Product card styles */
-.product-card {
-  height: 100%;
+/* Sales table */
+#salesList tr td button {
+  margin-right: 5px;
 }
 
-.product-card img {
-  height: 200px;
-  object-fit: cover;
+/* Since you mentioned removing the "Edit" button, we don't need additional button styles */
+#salesList tr td button.delete-sale {
+  background-color: #dc3545;
 }
 
-/* Checkout button styling */
-#checkoutBtn {
-  background-color: #8b4513; /* Brown color */
-  border-color: #8b4513;
-  color: #fff;
-  padding: 10px 20px; /* Default padding */
-  font-size: 1rem; /* Default font size */
-  transition: all 0.3s;
-  border-radius: 8px;
+#salesList tr td button.delete-sale:hover {
+  background-color: #c82333;
 }
 
-#checkoutBtn:hover {
-  background-color: #a0522d; /* Lighter brown on hover */
-  border-color: #a0522d;
+/* Mobile responsive sidebar */
+@media (max-width: 767.98px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    padding: 0;
+    width: 200px;
+  }
+
+  .sidebar.collapse {
+    margin-left: -100%;
+  }
+
+  .sidebar.collapse.show {
+    margin-left: 0;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 10px;
+  }
 }

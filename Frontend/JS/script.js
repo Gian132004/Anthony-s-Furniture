@@ -1,7 +1,4 @@
 // Sample data
-// ... (keep existing code)
-
-// Update products array
 let products = [
     { id: 1, title: 'Wooden Chair', price: 59.99, stock: 50, image: '/Frontend/images/00.jpg' },
     { id: 2, title: 'Dining Table', price: 299.99, stock: 20, image: '/Frontend/images/01.avif' },
@@ -14,8 +11,14 @@ let products = [
     { id: 9, title: 'Chair2', price: 499.99, stock: 15, image: '/Frontend/images/00.jpg' },
 ];
 
-
 let currentOrder = [];
+let sales = [
+    { id: 1, productTitle: 'Door 1', quantity: 10 },
+    { id: 2, productTitle: 'Door 2', quantity: 10 },
+    { id: 3, productTitle: 'Door 3', quantity: 10 },
+    { id: 4, productTitle: 'Door 4', quantity: 10 },
+    { id: 5, productTitle: 'Door 5', quantity: 10 }
+];
 
 // Render POS Products
 function renderPOSProducts() {
@@ -59,7 +62,7 @@ function updateCurrentOrder() {
     orderTotalElement.textContent = `$${total.toFixed(2)}`;
 }
 
-// Add event listeners
+// Add event listeners for adding products to the order
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('add-to-order')) {
         const productId = parseInt(e.target.getAttribute('data-id'));
@@ -79,6 +82,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Checkout event listener
 document.getElementById('checkoutBtn').addEventListener('click', () => {
     if (currentOrder.length > 0) {
         alert('Order placed successfully!');
@@ -99,62 +103,9 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
     }
 });
 
-// Initial render
-renderPOSProducts();
-
-let sales = [
-    { id: 1, productTitle: 'Door 1', quantity: 10 },
-    { id: 2, productTitle: 'Door 2', quantity: 10 },
-    { id: 3, productTitle: 'Door 3', quantity: 10 },
-    { id: 4, productTitle: 'Door 4', quantity: 10 },
-    { id: 5, productTitle: 'Door 5', quantity: 10 }
-];
-
-// DOM Elements
-const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('main > section');
-const productList = document.getElementById('productList');
-const salesList = document.getElementById('salesList');
-const addProductForm = document.getElementById('addProductForm');
-const totalSold = document.getElementById('totalSold');
-const sidebar = document.getElementById('sidebar');
-
-// Navigation
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        const targetId = link.getAttribute('data-tab');
-        sections.forEach(section => {
-            section.classList.add('d-none');
-            if (section.id === targetId) {
-                section.classList.remove('d-none');
-            }
-        });
-        updateDashboard();
-
-        // Close sidebar on mobile after clicking a link
-        if (window.innerWidth < 768) {
-            sidebar.classList.remove('show');
-        }
-    });
-});
-
-// Add Product
-addProductForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const id = document.getElementById('productId').value;
-    const title = document.getElementById('productTitle').value;
-    const stock = document.getElementById('productStocks').value;
-    const image = document.getElementById('productImage').value || '/placeholder.svg?height=200&width=200';
-    products.push({ id: parseInt(id), title, stock: parseInt(stock), image });
-    renderProducts();
-    addProductForm.reset();
-    updateDashboard();
-});
-
 // Render Products
 function renderProducts() {
+    const productList = document.getElementById('productList');
     productList.innerHTML = '';
     products.forEach(product => {
         const col = document.createElement('div');
@@ -173,25 +124,30 @@ function renderProducts() {
     });
 }
 
-// Render Sales
+// Render Sales (removed Edit button)
 function renderSales() {
+    const salesList = document.getElementById('salesList');
     salesList.innerHTML = '';
-    let total =    0;
+    let total = 0;
+    
+    // Check if the Sales section is active
+    const isSalesSectionActive = document.getElementById('sales').classList.contains('active-section');
+    
     sales.forEach(sale => {
         const row = document.createElement('tr');
+        
+        // No "Edit" button now; just display sale info
         row.innerHTML = `
             <td>${sale.id}</td>
             <td>${sale.productTitle}</td>
             <td>${sale.quantity}</td>
-            <td>
-                <button class="btn btn-sm btn-primary edit-sale" data-id="${sale.id}">Edit</button>
-                <button class="btn btn-sm btn-danger delete-sale" data-id="${sale.id}">X</button>
-            </td>
+            <td></td> <!-- No edit button here -->
         `;
         salesList.appendChild(row);
         total += sale.quantity;
     });
-    totalSold.textContent = total;
+    
+    document.getElementById('totalSold').textContent = total;
 }
 
 // Update Dashboard
@@ -209,36 +165,35 @@ function updateDashboard() {
     document.getElementById('latestSale').textContent = latestSale.productTitle;
 }
 
-// Initial render
-renderProducts();
-renderSales();
-updateDashboard();
+// Handle adding/editing products
+const addProductForm = document.getElementById('addProductForm');
+addProductForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const id = document.getElementById('productId').value;
+    const title = document.getElementById('productTitle').value;
+    const stock = document.getElementById('productStocks').value;
+    const image = document.getElementById('productImage').value || '/placeholder.svg?height=200&width=200';
+    products.push({ id: parseInt(id), title, stock: parseInt(stock), image });
+    renderProducts();
+    addProductForm.reset();
+    updateDashboard();
+});
 
-// Event delegation for edit and delete buttons
+// Event delegation for edit buttons (no action needed for sales)
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('edit-product')) {
         const id = e.target.getAttribute('data-id');
-        // Implement edit product functionality
-        console.log('Edit product', id);
-    } else if (e.target.classList.contains('edit-sale')) {
-        const id = e.target.getAttribute('data-id');
-        // Implement edit sale functionality
-        console.log('Edit sale', id);
-    } else if (e.target.classList.contains('delete-sale')) {
-        const id = parseInt(e.target.getAttribute('data-id'));
-        sales = sales.filter(sale => sale.id !== id);
-        renderSales();
-        updateDashboard();
+        console.log('Edit product', id);  // Placeholder for editing product
     }
 });
 
 // Logout functionality
 document.getElementById('logoutBtn').addEventListener('click', () => {
-    // Implement logout functionality
     console.log('Logout clicked');
 });
 
 // Sidebar toggle for mobile
+const sidebar = document.getElementById('sidebar');
 const sidebarToggle = document.querySelector('[data-bs-toggle="collapse"]');
 if (sidebarToggle) {
     sidebarToggle.addEventListener('click', () => {
@@ -252,3 +207,35 @@ document.addEventListener('click', (e) => {
         sidebar.classList.remove('show');
     }
 });
+
+// Navigation
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('main > section');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        const targetId = link.getAttribute('data-tab');
+        sections.forEach(section => {
+            section.classList.add('d-none');
+            if (section.id === targetId) {
+                section.classList.remove('d-none');
+                if (section.id === 'sales') {
+                    renderSales();
+                }
+            }
+        });
+        updateDashboard();
+
+        // Close sidebar on mobile after clicking a link
+        if (window.innerWidth < 768) {
+            sidebar.classList.remove('show');
+        }
+    });
+});
+
+// Initial render
+renderPOSProducts();
+renderProducts();
+renderSales();
+updateDashboard();
