@@ -214,7 +214,7 @@ renderProducts();
 renderSales();
 updateDashboard();
 
-// Event delegation for edit and delete buttons
+// Event delegation for edit and delete button
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('edit-product')) {
         const id = e.target.getAttribute('data-id');
@@ -246,7 +246,7 @@ if (sidebarToggle) {
     });
 }
 
-// Close sidebar when clicking outside on mobile
+// Close sidebar when clicking outside on mobiles
 document.addEventListener('click', (e) => {
     if (window.innerWidth < 768 && !sidebar.contains(e.target) && !e.target.matches('[data-bs-toggle="collapse"]')) {
         sidebar.classList.remove('show');
