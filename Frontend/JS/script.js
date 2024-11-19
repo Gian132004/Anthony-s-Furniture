@@ -234,7 +234,7 @@ navLinks.forEach(link => {
     });
 });
 
-// Initial render
+// Initial renders
 renderPOSProducts();
 renderProducts();
 renderSales();
