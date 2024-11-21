@@ -1,131 +1,94 @@
-/* General Styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Light gray */
-    color: #4b382a; /* Dark brown */
-}
-
-/* Sidebar Styling */
-.col-md-3.col-lg-2 {
-    background-color: #D7CBA6; /* Updated background color */
-    border-right: 2px solid #b89d77; /* Slightly darker beige border */
-}
-
-
-h2 {
-    color: #603e22; /* Medium brown */
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.nav-link {
-    color: #4b382a; /* Dark brown text */
+.nav-button {
+    background-color: #a04932;
+    color: #ffffff;
+    border: none;
     font-size: 1rem;
     font-weight: bold;
     padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
     margin-bottom: 10px;
 }
 
-.nav-link.active, .nav-link:hover {
-    background-color: #b89d77; /* Light brown for hover/active states */
-    color: #ffffff; /* White text for better contrast */
+.nav-button:hover {
+    background-color: #8e3e29;
 }
 
-.btn-danger {
-    background-color: #a04932; /* Deep red-brown */
+.nav-button.active {
+    background-color: #8e3e29;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #4b382a;
+}
+
+.sidebar {
+    background-color: #D7CBA6;
+    padding: 20px;
+    border-right: 2px solid #b89d77;
+}
+
+.sidebar-title {
+    color: #603e22;
+    font-weight: bold;
+}
+
+.btn {
+    background-color: #a04932;
     border: none;
 }
 
 .btn-danger:hover {
-    background-color: #8e3e29; /* Darker red-brown */
+    background-color: #8e3e29;
 }
 
-/* Main Content Styling */
-.col-md-9.col-lg-10 h1 {
-    color: #603e22; /* Medium brown */
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-/* Product Cards */
-.card {
-    border: 1px solid #b89d77; /* Light brown border */
+.product-card .card {
+    background-color: #EADDCA;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
-    background-color: #ffffff; /* White background for cards */
+    transition: box-shadow 0.3s ease;
 }
 
-.card .card-title {
-    font-weight: bold;
-    color: #603e22; /* Medium brown */
-    font-size: 1rem;
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+    padding: 10px;
 }
 
-.card .card-text {
-    font-size: 0.9rem;
-    color: #4b382a; /* Dark brown */
+.card-body h5, .card-body p {
+    text-align: left;
+    margin: 0 0 5px;
 }
 
 .card .btn-primary {
-    background-color: #b89d77; /* Light brown */
+    margin-top: 10px;
+    width: 150px;
+    align-self: center;
+    background-color: #8B4513;
     border: none;
     font-size: 0.9rem;
-    font-weight: bold;
+    font-weight: bold;  
 }
 
 .card .btn-primary:hover {
-    background-color: #9f835e; /* Slightly darker brown */
-    color: #ffffff; /* White text */
+    background-color: #9f835e;
+    color: #ffffff;
 }
 
-/* Current Product Section */
-.card .btn-success {
-    background-color: #6b8f5a; /* Olive green */
-    border: none;
-    font-size: 0.9rem;
+.card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.card .btn-success:hover {
-    background-color: #557141; /* Darker olive green */
-}
-
-/* Table Styling for Sales Page */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #ffffff; /* White table background */
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-th {
-    background-color: #b89d77; /* Light brown */
-    color: #ffffff; /* White text */
-    text-align: left;
-    padding: 10px;
-}
-
-td {
-    padding: 10px;
-    border-bottom: 1px solid #e0d6c5; /* Light border for rows */
-}
-
-tfoot td {
-    font-weight: bold;
-    color: #603e22; /* Medium brown */
-}
-
-/* Adjustments for Smaller Screens */
-@media (max-width: 768px) {
-    h2 {
-        text-align: center;
-    }
-    .nav-link {
-        text-align: center;
-    }
-    .btn-danger {
-        font-size: 0.9rem;
-    }
+.checkout-btn {
+    background-color: #8B4513 !important;
+    border-color: #8B4513 !important;
+    color: white !important;
 }
